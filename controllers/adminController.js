@@ -85,4 +85,16 @@ module.exports = {
             res.status(200).send(result)
         })
     },
+
+    nilaiTugasByName: (req, res) => {
+        let getQuery = `select * from nilai_tugas where fullname = ${db.escape(req.body.fullname)};`
+
+        db.query(getQuery, (err, result) => {
+            if (err) {
+                console.log(err)
+                res.status(400).send(err + 'erorNilaiTugas by id')
+            }
+            res.status(200).send(result)
+        })
+    }
 }

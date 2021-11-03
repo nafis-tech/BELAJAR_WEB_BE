@@ -7,5 +7,6 @@ router.get('/all-soaltugas', adminController.dataAllSoalTugas)
 router.post('/soal-tugas', adminController.soalTugas)
 router.post('/nilai-tugas', adminController.nilaiTugas)
 router.post('/student-fullname', adminController.dataStudentsById)
+router.post('/nilai-byname', adminController.nilaiTugasByName)
 
 module.exports = router
