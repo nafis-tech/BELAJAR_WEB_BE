@@ -28,9 +28,10 @@ app.get('/', (req, res) => {
     res.status(200).send('<h1>Welcome to the Belajar Web!</h1>')
 })
 
-const { adminRouter} = require('./cRounters')
+const { adminRouter, studentRouter} = require('./cRounters')
 
 app.use('/admin', adminRouter)
+app.use('/student', studentRouter)
 
 
 app.listen(PORT, () => console.log(`Server is running at PORT: ${PORT}`))

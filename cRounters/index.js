@@ -1,5 +1,7 @@
 const adminRouter = require('./adminRouter')
+const studentRouter = require('./studentRouter')
 
 module.exports = {
-    adminRouter
+    adminRouter,
+    studentRouter
 }
