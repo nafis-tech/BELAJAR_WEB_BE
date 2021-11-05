@@ -9,4 +9,9 @@ router.post('/nilai-tugas', adminController.nilaiTugas)
 router.post('/student-fullname', adminController.dataStudentsById)
 router.post('/nilai-byname', adminController.nilaiTugasByName)
 
+router.post('/soal-ujian', adminController.soalUjian)
+router.post('/nilai-ujian', adminController.nilaiUjian)
+router.post('/ujian-byname', adminController.nilaiUjianByName)
+
+
 module.exports = router
