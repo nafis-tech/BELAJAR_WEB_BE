@@ -186,4 +186,90 @@ module.exports = {
             })
         })
     },
+
+    rekapNilaiTugasAll: (req, res) => {
+        const { page} = req.body
+        let getQuery = `select * from nilai_tugas;`
+
+        db.query(getQuery, (err, resultNilaiTugas) => {
+            if (err) {
+                console.log(err)
+                res.status(400).send(err + 'eror Rekap NILAI TUGAS')
+            }
+            let jumlahHalSoal = resultNilaiTugas.length
+            let maxPage = Math.ceil(jumlahHalSoal / 8)
+            let offsetPage = (page * 8) - 8
+
+            let paginationSatuan = `select * from nilai_tugas limit 8 offset ${offsetPage};`
+
+            db.query(paginationSatuan, (err, resultNilaiTgsPaginate) => {
+                if (err) {
+                    console.log(err)
+                    res.status(400).send(err +'eror paginate REKAP NILAI TUGAS')
+                }
+
+                res.status(200).send([...resultNilaiTgsPaginate, maxPage])
+            })
+        })
+    },
+
+    rekapAllNilaiUjian: (req, res) => {
+        const { page} = req.body
+        let getQuery = `select * from nilai_ujian;`
+
+        db.query(getQuery, (err, resultNilaiTugas) => {
+            if (err) {
+                console.log(err)
+                res.status(400).send(err + 'eror Rekap NILAI UJIAN')
+            }
+            let jumlahHalSoal = resultNilaiTugas.length
+            let maxPage = Math.ceil(jumlahHalSoal / 8)
+            let offsetPage = (page * 8) - 8
+
+            let paginationSatuan = `select * from nilai_ujian limit 8 offset ${offsetPage};`
+
+            db.query(paginationSatuan, (err, resultNilaiTgsPaginate) => {
+                if (err) {
+                    console.log(err)
+                    res.status(400).send(err +'eror paginate REKAP NILAI TUGAS')
+                }
+
+                res.status(200).send([...resultNilaiTgsPaginate, maxPage])
+            })
+        })
+    },
+    // filterNilaiUjian: (req, res) => {
+    //     const { name, page } = req.body
+    //     let filterBysatuan = `select * from user u
+    //         join order_satuan s
+    //         on u.iduser = s.iduser
+    //         where username like '%${name}%' or date like '%${name}%' or order_number like '%${name}%';`
+
+    //     db.query(filterBysatuan, (err, resultFilterBySatuan) => {
+    //         if (err) {
+    //             console.log(err)
+    //             res.status(400).send(err)
+    //         }
+
+    //         let jumlahSemuaFilter = resultFilterBySatuan.length
+    //         let maxPageSatuan = Math.ceil(jumlahSemuaFilter / 5)
+    //         let offsetSatuan = (page * 5) - 5
+
+    //         let paginationSatuan = `select * from user u
+    //             join order_satuan s
+    //             on u.iduser = s.iduser
+    //             where username like '%${name}%' or date like '%${name}%' or order_number like '%${name}%' limit 5 offset ${offsetSatuan};`
+
+    //         db.query(paginationSatuan, (err, resultPaginationSatuan) => {
+    //             if (err) {
+    //                 console.log(err)
+    //                 res.status(400).send(err)
+    //             }
+
+    //             res.status(200).send([...resultPaginationSatuan, maxPageSatuan])
+    //         })
+    //     })
+    // },
+
+
 }

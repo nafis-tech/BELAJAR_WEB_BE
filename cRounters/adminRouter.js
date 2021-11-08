@@ -13,5 +13,8 @@ router.post('/soal-ujian', adminController.soalUjian)
 router.post('/nilai-ujian', adminController.nilaiUjian)
 router.post('/ujian-byname', adminController.nilaiUjianByName)
 
+router.post('/rekap-ujian', adminController.rekapAllNilaiUjian)
+router.post('/rekap-tugas', adminController.rekapNilaiTugasAll)
+
 
 module.exports = router
